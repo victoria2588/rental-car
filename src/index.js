@@ -4,11 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { App } from 'components/App';
 import './index.css';
+import { GlobalStyle } from 'components/GlobalStyle';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename="/rental-car">
       <App />
+      <GlobalStyle />
     </BrowserRouter>
   </React.StrictMode>
 );
