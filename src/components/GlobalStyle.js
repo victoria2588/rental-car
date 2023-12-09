@@ -2,13 +2,28 @@ import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
+
+:root {
+  --color-text-first: #121417;
+  --color-text-second: #3470FF;
+  --color-button: #3470FF;
+  --color-button-hover: #0B44CD;
+  --color-button-text: #FFFFFF
+}
+
 body {
-    margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-	/* background-color: rgb(250, 200, 241); */
-	margin: 0;
+    width: 100%;
+    
+	/* background-color: rgb(250, 250, 250); */
+	margin: 0 auto;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.5;
+  color: var(--color-text-main);
   }
 
 code {

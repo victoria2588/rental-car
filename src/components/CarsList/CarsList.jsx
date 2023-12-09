@@ -1,17 +1,18 @@
 import { useSelector } from 'react-redux';
 import { CarsItem } from '../CarsItem/CarsItem';
 import { selectAdverts } from '../../redux/selectors';
+import { CarsItemWrapper, CarsListWrapper } from './CarsList.styled';
 
 export const CarsList = () => {
   const adverts = useSelector(selectAdverts);
 
   return (
-    <ul>
+    <CarsListWrapper>
       {adverts.map(item => (
-        <li key={item.id}>
+        <CarsItemWrapper key={item.id}>
           <CarsItem item={item} />
-        </li>
+        </CarsItemWrapper>
       ))}
-    </ul>
+    </CarsListWrapper>
   );
 };

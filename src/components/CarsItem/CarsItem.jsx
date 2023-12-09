@@ -1,5 +1,17 @@
 import React from 'react';
-
+import {
+  CarItemButton,
+  CarItemHeart,
+  CarItemListInfo,
+  CarItemListInfoItem,
+  CarItemPrice,
+  CarItemTitle,
+  CarItemTitleSpan,
+  CarItemTitleWrapper,
+  ImageCar,
+  ImageWrapper,
+} from './CarsItem.styled';
+import sprite from '../../images/sprite.svg';
 export const CarsItem = ({
   item: {
     id,
@@ -20,26 +32,34 @@ export const CarsItem = ({
     mileage,
   },
 }) => {
+  const [, city, country] = address.split(',');
+
   return (
     <>
-      <div>
-        <img src={img} alt={`${make} ${model}`} />
-        <button>Favorite</button>
-      </div>
-      <div>
-        <p>
-          {make} <span>{model}</span>, {year}
-        </p>
-        <p>{rentalPrice}</p>
-      </div>
-      <ul>
-        <li>{rentalCompany}</li>
-        <li>{type}</li>
-        <li>{functionalities}</li>
-        <li>{address}</li>
-        <li>{description}</li>
-      </ul>
-      <button>Learn more</button>{' '}
+      <ImageWrapper>
+        <ImageCar src={img} alt={`${make} ${model}`} />
+        <>
+          <CarItemHeart>
+            <use href={`${sprite}#heart2`}></use>
+          </CarItemHeart>
+        </>
+      </ImageWrapper>
+      <CarItemTitleWrapper>
+        <CarItemTitle>
+          {make} <CarItemTitleSpan>{model}</CarItemTitleSpan>, {year}
+        </CarItemTitle>
+        <CarItemPrice>{rentalPrice}</CarItemPrice>
+      </CarItemTitleWrapper>
+      <CarItemListInfo>
+        <CarItemListInfoItem>{city}</CarItemListInfoItem>
+        <CarItemListInfoItem>{country}</CarItemListInfoItem>
+        <CarItemListInfoItem>{rentalCompany}</CarItemListInfoItem>
+        <CarItemListInfoItem>{type}</CarItemListInfoItem>
+        <CarItemListInfoItem>{model}</CarItemListInfoItem>
+        <CarItemListInfoItem>{id}</CarItemListInfoItem>
+        <CarItemListInfoItem>{functionalities?.[0]}</CarItemListInfoItem>
+      </CarItemListInfo>
+      <CarItemButton>Learn more</CarItemButton>{' '}
     </>
   );
 };

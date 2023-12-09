@@ -4,6 +4,7 @@ import { fetchAdverts } from '../redux/operations';
 import { selectIsLoading, selectError } from '../redux/selectors';
 import { Filter } from '../components/Filter/Filter';
 import { CarsList } from '../components/CarsList/CarsList';
+import { CatalogContainer } from './CatalogPage.styled';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -15,13 +16,15 @@ const CatalogPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <>
+    <CatalogContainer>
       <h2>Catalog Page</h2>
       <Filter />
       {isLoading && !error && <b>Request in progress...</b>}
 
       <CarsList />
-    </div>
+    </CatalogContainer>
+    </>
   );
 };
 

@@ -5,12 +5,12 @@ import { Suspense } from 'react';
 
 export const Layout = () => {
   return (
-    <div style={{ maxWidth: 1400, margin: '0 auto' }}>
+    <>
       <AppBar />
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
       {/* <Toaster position="top-right" reverseOrder={false} /> */}
-    </div>
+    </>
   );
 };
