@@ -5,7 +5,7 @@ import {
   HomeLink,
   HomeTitle,
   HomeWrapper,
-} from './Home.styled';
+} from './HomePage.styled';
 
 const Home = () => {
   return (
