@@ -23,7 +23,7 @@ export const CarsItem = ({
   return (
     <>
       <div>
-        <img src={img}></img>
+        <img src={img} alt={`${make} ${model}`} />
         <button>Favorite</button>
       </div>
       <div>
