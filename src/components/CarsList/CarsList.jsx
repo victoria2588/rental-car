@@ -15,7 +15,7 @@ export const CarsList = () => {
           </CarsItemWrapper>
         ))}
       </CarsListWrapper>
-      <button type="button">Load more</button>
+      {/* <button type="button">Load more</button> */}
     </>
   );
 };
