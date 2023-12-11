@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFavorites } from '../../redux/selectors';
 import { toggleFavoriteAdverts } from '../../redux/favoritesSlice';
@@ -15,37 +15,35 @@ import {
   ImageWrapper,
 } from './CarsItem.styled';
 import sprite from '../../images/sprite.svg';
+import Modal from '../Modal/Modal';
+import CardModal from 'components/Modal/CardModal';
 
-export const CarsItem = ({
-  item: {
-    id,
-    year,
-    make,
-    model,
-    type,
-    img,
-    functionalities,
-    rentalPrice,
-    rentalCompany,
-    address,
-  },
-}) => {
-  const [, city, country] = address.split(',');
+export const CarsItem = ({ item }) => {
+  const [, city, country] = item.address.split(',');
   const dispatch = useDispatch();
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
   const favorites = useSelector(selectFavorites);
+  const handleClick = () => {
+    setIsOpenModal(!isOpenModal);
+  };
 
   return (
     <>
       <ImageWrapper>
-        <ImageCar src={img} alt={`${make} ${model}`} />
+        <ImageCar src={item.img} alt={`${item.make} ${item.model}`} />
         <>
-          {!favorites.includes(id) && (
-            <CarItemHeart onClick={() => dispatch(toggleFavoriteAdverts(id))}>
+          {!favorites.includes(item.id) && (
+            <CarItemHeart
+              onClick={() => dispatch(toggleFavoriteAdverts(item.id))}
+            >
               <use href={`${sprite}#heart1`}></use>
             </CarItemHeart>
           )}
-          {favorites.includes(id) && (
-            <CarItemHeart onClick={() => dispatch(toggleFavoriteAdverts(id))}>
+          {favorites.includes(item.id) && (
+            <CarItemHeart
+              onClick={() => dispatch(toggleFavoriteAdverts(item.id))}
+            >
               <use href={`${sprite}#heart2`}></use>
             </CarItemHeart>
           )}
@@ -53,20 +51,26 @@ export const CarsItem = ({
       </ImageWrapper>
       <CarItemTitleWrapper>
         <CarItemTitle>
-          {make} <CarItemTitleSpan>{model}</CarItemTitleSpan>, {year}
+          {item.make} <CarItemTitleSpan>{item.model}</CarItemTitleSpan>,{' '}
+          {item.year}
         </CarItemTitle>
-        <CarItemPrice>{rentalPrice}</CarItemPrice>
+        <CarItemPrice>{item.rentalPrice}</CarItemPrice>
       </CarItemTitleWrapper>
       <CarItemListInfo>
         <CarItemListInfoItem>{city}</CarItemListInfoItem>
         <CarItemListInfoItem>{country}</CarItemListInfoItem>
-        <CarItemListInfoItem>{rentalCompany}</CarItemListInfoItem>
-        <CarItemListInfoItem>{type}</CarItemListInfoItem>
-        <CarItemListInfoItem>{model}</CarItemListInfoItem>
-        <CarItemListInfoItem>{id}</CarItemListInfoItem>
-        <CarItemListInfoItem>{functionalities?.[0]}</CarItemListInfoItem>
+        <CarItemListInfoItem>{item.rentalCompany}</CarItemListInfoItem>
+        <CarItemListInfoItem>{item.type}</CarItemListInfoItem>
+        <CarItemListInfoItem>{item.model}</CarItemListInfoItem>
+        <CarItemListInfoItem>{item.id}</CarItemListInfoItem>
+        <CarItemListInfoItem>{item.functionalities?.[0]}</CarItemListInfoItem>
       </CarItemListInfo>
-      <CarItemButton>Learn more</CarItemButton>{' '}
+      <CarItemButton onClick={handleClick}>Learn more</CarItemButton>{' '}
+      {isOpenModal && (
+        <Modal closeModal={handleClick}>
+          <CardModal car={{ ...item, city, country }} />
+        </Modal>
+      )}
     </>
   );
 };
