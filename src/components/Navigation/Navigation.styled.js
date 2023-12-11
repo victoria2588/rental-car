@@ -7,6 +7,7 @@ export const StyledNavLink = styled(NavLink)`
   border-radius: 4px;
   padding: 12px;
   font-weight: 700;
+  font-size: 24px;
 
   &:hover,
   &:focus {

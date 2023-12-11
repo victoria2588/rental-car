@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-export const ImageWrapper = styled.div``;
+export const ImageWrapper = styled.div`
+  overflow: hidden;
+  border-radius: 14px;
+  height: 268px;
+  position: relative;
+`;
 
 export const ImageCar = styled.img`
   width: 274px;
@@ -11,8 +16,6 @@ export const ImageCar = styled.img`
 export const CarItemTitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  /* font-weight: 400;
-  font-size: 16px; */
 `;
 
 export const CarItemTitle = styled.h2`
@@ -55,9 +58,9 @@ export const CarItemButton = styled.button`
   border-radius: 12px;
   border: none;
   display: inline-block;
-  transition: background 2s, color 2s;
-  cursor: pointer;
-  &:hover {
+  transition: background 0.5s, color 0.5s;
+  &:hover,
+  &:focus {
     background-color: var(--color-button-hover);
   }
 `;
@@ -65,7 +68,7 @@ export const CarItemButton = styled.button`
 export const CarItemHeart = styled.svg`
   width: 18px;
   height: 18px;
-  /* position: absolute;
+  position: absolute;
   top: 14px;
-  right: 14px; */
+  right: 14px;
 `;

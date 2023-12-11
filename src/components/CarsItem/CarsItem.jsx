@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFavorites } from '../../redux/selectors';
+import { toggleFavoriteAdverts } from '../../redux/favoritesSlice';
 import {
   CarItemButton,
   CarItemHeart,
@@ -12,6 +15,7 @@ import {
   ImageWrapper,
 } from './CarsItem.styled';
 import sprite from '../../images/sprite.svg';
+
 export const CarsItem = ({
   item: {
     id,
@@ -20,28 +24,31 @@ export const CarsItem = ({
     model,
     type,
     img,
-    description,
-    fuelConsumption,
-    engineSize,
-    accessories,
     functionalities,
     rentalPrice,
     rentalCompany,
     address,
-    rentalConditions,
-    mileage,
   },
 }) => {
   const [, city, country] = address.split(',');
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
 
   return (
     <>
       <ImageWrapper>
         <ImageCar src={img} alt={`${make} ${model}`} />
         <>
-          <CarItemHeart>
-            <use href={`${sprite}#heart2`}></use>
-          </CarItemHeart>
+          {!favorites.includes(id) && (
+            <CarItemHeart onClick={() => dispatch(toggleFavoriteAdverts(id))}>
+              <use href={`${sprite}#heart1`}></use>
+            </CarItemHeart>
+          )}
+          {favorites.includes(id) && (
+            <CarItemHeart onClick={() => dispatch(toggleFavoriteAdverts(id))}>
+              <use href={`${sprite}#heart2`}></use>
+            </CarItemHeart>
+          )}
         </>
       </ImageWrapper>
       <CarItemTitleWrapper>

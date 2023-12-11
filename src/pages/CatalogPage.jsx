@@ -17,13 +17,12 @@ const CatalogPage = () => {
 
   return (
     <>
-    <CatalogContainer>
-      <h2>Catalog Page</h2>
-      <Filter />
-      {isLoading && !error && <b>Request in progress...</b>}
+      <CatalogContainer>
+        <Filter />
+        {isLoading && !error && <b>Request in progress...</b>}
 
-      <CarsList />
-    </CatalogContainer>
+        <CarsList />
+      </CatalogContainer>
     </>
   );
 };

@@ -8,15 +8,17 @@ export const GlobalStyle = createGlobalStyle`
   --color-text-second: #3470FF;
   --color-button: #3470FF;
   --color-button-hover: #0B44CD;
-  --color-button-text: #FFFFFF
+  --color-button-text: #FFFFFF;
+  --color-text-label: #8A8A89;
+  --color-background-input: #F7F7FB;
 }
 
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
-    
-	/* background-color: rgb(250, 250, 250); */
+    background-color: #ffffff;
+
 	margin: 0 auto;
   font-family: 'Manrope', sans-serif;
   font-weight: 400;
@@ -52,5 +54,9 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
+}
+
+button {
+  cursor: pointer;
 }
 `;
