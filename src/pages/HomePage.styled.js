@@ -7,7 +7,6 @@ export const HomeContainer = styled.section`
   background-size: cover;
   background-position: center;
   height: 100vh;
-  /* width: 1440px; */
   margin-left: auto;
   margin-right: auto;
   color: white;

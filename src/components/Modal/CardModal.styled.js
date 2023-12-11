@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-// import { query, colors } from '../../helpers';
-// import { Btn } from '../GlobalStyle';
 
 export const Wrapper = styled.div`
   max-width: 461px;
